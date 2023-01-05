@@ -54,7 +54,7 @@ export default{
         {
             // console.log(this.section);
             axios
-            .get(`http://localhost:8000/api/v1/mainsite/get-posts/${this.section}`)
+            .get(`/api/v1/mainsite/get-posts/${this.section}`)
             .then((response) =>{
                 // console.log(response.data);
                 this.posts = response.data
