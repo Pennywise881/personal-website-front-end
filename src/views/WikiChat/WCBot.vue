@@ -94,6 +94,9 @@ export default {
             this.messages.push(`Hello! I am WikiChat. Ask me something about: \n ${this.topic}`)
         },
         sendMessage(){
+
+            if(this.fetchingAnswer)return;
+
             const data = {
                 message: document.querySelector('#message').value
             };
