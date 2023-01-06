@@ -1,5 +1,5 @@
 <template>
-    <div class="md:hidden h-fit">
+    <div class="md:hidden h-screen">
 
     </div>
     <footer class="bg-gray-800 text-center p-2 md:p-5">
@@ -12,7 +12,7 @@
                 <img v-for="social in this.socials" width="20" :src="social.src" :alt="social.alt" class="mr-2 hover:cursor-pointer">
             </div>
             <div>
-                <span class="mt-2 text-xs text-gray-500 text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">zamansproject™</a>. All Rights Reserved.</span>
+                <span class="mt-2 text-xs text-gray-500 text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">zamansprojects™</a>. All Rights Reserved.</span>
             </div>
         </div>
     </footer>

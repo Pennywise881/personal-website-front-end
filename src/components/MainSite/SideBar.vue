@@ -7,16 +7,16 @@
                         <img class="m-auto rounded-full border-4 border-gray-300 shadow-sm w-32" src="../../../src/assets/img.png" alt="user image" />
                     </li>
                     <li>
-                        <p class="my-3 text-center font-bold text-xl font-medium">Nafi Uz Zaman</p>
+                        <p class="my-3 text-center font-bold text-xl">Nafi Uz Zaman</p>
                     </li>
                     <li>
                         <p class="my-3 text-center text-sm font-light">NLP, Web & Game Dev</p>
                     </li>
                 </ul>
                 <div class="p-5 my-3 flex flex-col item-center justify-start">
-                    <div v-for="social in this.socials" class="flex mb-3 hover:text-red-800 hover:underline hover:cursor-pointer">
+                    <div v-for="social in this.socials" class="flex mb-3 ">
                         <img width="16" :alt="social.alt" :src="social.src">
-                        <p class="ml-2">{{social.title}}</p>
+                        <p class="ml-2 hover:text-red-800 hover:underline hover:cursor-pointer">{{social.title}}</p>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
     <div class="flex justify-between">
       <router-link
         :to="{name:'web-dev'}">
-        <p class="hover:underline hover:cursor-pointer hover:text-red-800">web-dev</p>
+        <p class="hover:underline hover:cursor-pointer hover:text-red-800">web</p>
       </router-link>
       <p>games</p>
     </div>
@@ -39,6 +39,7 @@
           :to="{name: link}"
           >
           <p v-if="link === 'home'" class="hover:text-red-800 hover:underline hover:cursor-pointer">blog</p>
+          <p v-else-if="link === 'web-dev'" class="hover:text-red-800 hover:underline hover:cursor-pointer">web</p>
           <p v-else class="hover:text-red-800 hover:underline hover:cursor-pointer">{{link}}</p>
         </router-link> 
         <p class="px-10 self-center">
