@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col font-base">
-    <NavBar @change-posts="changePosts($event)"/>
-    <!-- <router-view /> -->
-    <div class="flex">
+    <NavBar @change-section="changeSection($event)"/>
+    <router-view />
+    <!-- <div class="flex">
         <SideBar />
-        <Post :section="this.posts"/>
-    </div>
+        <Post :section="this.section"/>
+    </div> -->
     <Footer />
   </div>
 </template>
@@ -14,29 +14,29 @@
 import axios from "axios";
 import Footer from "./components/MainSite/Footer.vue";
 import NavBar from "./components/MainSite/NavBar.vue";
-import Post from './components/MainSite/Post.vue';
-import SideBar from './components/MainSite/SideBar.vue';
+// import Post from './components/MainSite/Post.vue';
+// import SideBar from './components/MainSite/SideBar.vue';
 
 export default{
   name: "App",
   components:{
     NavBar,
-    Post,
-    SideBar,
+    // Post,
+    // SideBar,
     Footer
   },
-  data(){
-    return{
-      posts: 'blog',
-    }
-  },
-  methods:{
-    changePosts(posts)
-    { 
-      this.posts = posts;
-      console.log('From App.vue:', this.posts);
-    }
-  },
+  // data(){
+  //   return{
+  //     section: 'blog',
+  //   }
+  // },
+  // methods:{
+  //   changeSection(section)
+  //   { 
+  //     this.section = section;
+  //     // console.log('From App.vue:', this.section);
+  //   }
+  // },
   beforeCreate()
   {
     this.$store.commit("INIT_STORE");
