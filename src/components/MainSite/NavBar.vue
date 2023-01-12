@@ -1,52 +1,34 @@
 <template>
-  <nav class="md:hidden grid grid-cols-3 gap-4 p-5 bg-zinc-200 text-xs font-bold uppercase border-b-2 border-zinc-400">
-    <div class="flex justify-between">
-      <router-link
-        :to="{name:'home'}">
-        <p class="hover:underline hover:cursor-pointer hover:text-red-800">blog</p>
-      </router-link>
-      <router-link
-        :to="{name:'ai-ml'}">
-        <p class="hover:underline hover:cursor-pointer hover:text-red-800">ai-ml</p>
-      </router-link>
+  <nav class="p-5 font-bold md:sticky md:w-full border-b-2 border-red-600 bg-zinc-200">
+    <div class="md:hidden grid grid-cols-5 gap-4">
+      <div v-for="item in this.navItems">
+        <div v-if="item.text === 'zamansprojects'" class="flex justify-center">
+          <img src="../../../src/assets/img.png" alt="img" class="rounded-full absolute hover:underline hover:cursor-pointer w-20 border-2 border-red-600">  
+        </div>
+        <div v-else class="flex justify-between uppercase">
+          <p>
+            <span @click="this.setPostSection(item.text, item.link)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+              {{item.text}}
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="flex justify-center">
-      <img src="../../../src/assets/img.png" alt="Circular Image" class="rounded-full w-20 absolute border-2 border-red-600">
-    </div>
-
-    <div class="flex justify-between">
-      <router-link
-        :to="{name:'web-dev'}">
-        <p class="hover:underline hover:cursor-pointer hover:text-red-800">web</p>
-      </router-link>
-      <p>games</p>
-    </div>
-  </nav>
-
-  <nav class="hidden md:block sticky w-full border-b-2 border-zinc-400">
-    <div class="bg-zinc-200 flex p-5">
-      <router-link
-      @click="this.indicateCurrentPageOnNav('home')"
-      :to="{name:'home'}">
-        <p class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
-      </router-link>
-
-      <div class="ml-20 flex font-bold uppercase text-lg">
-        <router-link
-          v-for="link in this.links"
-          class="px-10 self-center cursor-auto"
-          :to="{name: link}"
-          >
-          <p v-if="link === 'home'" class="hover:text-red-800 hover:underline hover:cursor-pointer">blog</p>
-          <p v-else-if="link === 'web-dev'" class="hover:text-red-800 hover:underline hover:cursor-pointer">web</p>
-          <p v-else class="hover:text-red-800 hover:underline hover:cursor-pointer">{{link}}</p>
-        </router-link> 
-        <p class="px-10 self-center">
-          <span class="hover:underline hover:cursor-pointer hover:text-red-800">
-          games
-          </span>
-        </p>
+    <div class="hidden md:block">
+      <div class="flex justify-between">
+        <div class="flex">
+          <p class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
+        </div>
+        <div class="flex text-lg font-bold uppercase items-center">
+          <div v-for="item in this.navItems">
+            <p v-if="item.text !=='zamansprojects'" class="self-center px-10 ">
+              <span @click="this.setPostSection(item.text, item.link)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+                {{item.text}}
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -55,30 +37,51 @@
 <script>
 
 export default{
-    name: "NavBar",
-    data(){
-      return{
-        links:['home', 'ai-ml', 'web-dev'],
-        currentPage: 'home',
-      }
-    },  
-    // created(){
-    //   this.currentPage = window.location.pathname.split("/")[1];
-    //   if(this.currentPage === "")this.currentPage='home';
-    // },
-    // mounted(){
-    //   this.indicateCurrentPageOnNav(this.currentPage);
-    // },
-    methods:{
-      indicateCurrentPageOnNav(link){
-
-        const activeLinkStyle = 'underline cursor-pointer text-red-800'
-        const inactiveLinkStyle = 'hover:underline hover:cursor-pointer hover:text-red-800'
-
-        document.getElementById(this.currentPage).className = inactiveLinkStyle;
-        document.getElementById(link).className = activeLinkStyle;
-        this.currentPage = link;
-      }
+  name: "NavBar",
+  data(){
+    return{
+      navItems:
+      [
+        {
+          text: 'blog',
+          link: 'blog',    
+        }, 
+        {
+          text: 'ai-ml',
+          link: 'ai-ml',
+        },
+        {
+          text : 'zamansprojects',
+          link : 'blog',
+        },
+        {
+          text: 'web',
+          link: 'web-dev',
+        }, 
+        {
+          text: 'games',
+          link: 'blog'
+        },
+      ],
+      currentPostSection: 'blog',
     }
+  },  
+  mounted(){
+    this.setPostSection(this.currentPostSection)
+  },
+  methods:{
+    setPostSection(text, link)
+    { 
+      var spans = document.getElementsByTagName('span');
+      this.currentPostSection = text;
+
+      for (let i = 0; i < spans.length; i++) {
+        if(spans[i].innerHTML === this.currentPostSection)spans[i].className = "underline cursor-pointer text-red-800";
+        else spans[i].className = 'hover:underline hover:cursor-pointer hover:text-red-800'; 
+      }
+
+      this.$emit('change-posts', link);
+    }
+  }
 }
 </script>

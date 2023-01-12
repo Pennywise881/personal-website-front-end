@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid'
 export default createStore({
     state:{
         authId: '',
+        currentPostSection: '',
     },
     mutations:{
         INIT_STORE(state)
@@ -19,7 +20,12 @@ export default createStore({
         SET_BOOKING_DATA(state, bookingData)
         {
             localStorage.setItem("bookingData", JSON.stringify(bookingData));
+        },
+        SET_CURRENT_POST_SECTION(state, currentPostSection)
+        {
+            state.currentPostSection = currentPostSection;
         }
+
     },
     actions:{
 

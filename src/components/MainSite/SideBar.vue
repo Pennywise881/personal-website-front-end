@@ -4,7 +4,7 @@
             <div style="height:80vh">
                 <ul class="mt-5">
                     <li>
-                        <img class="m-auto rounded-full border-4 border-gray-300 shadow-sm w-32" src="../../../src/assets/img.png" alt="user image" />
+                        <img class="m-auto rounded-full border-4 border-red-600 shadow-sm w-32" src="../../../src/assets/img.png" alt="user image" />
                     </li>
                     <li>
                         <p class="my-3 text-center font-bold text-xl">Nafi Uz Zaman</p>
