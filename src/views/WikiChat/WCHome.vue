@@ -3,7 +3,7 @@
         <div class="flex flex-col justify-center items-center">
             <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="wikipedialogo">
             <div class="mt-3 flex items-center">
-                <input @keyup.enter="this.sendArticleName" value="" type="text" id="articleName" class="mr-2 border border-gray-300 focus:ring-blue-500 focus:bg-white focus:border-blue-500 rounded-full" placeholder="Wikipedia article name......">
+                <input @keyup.enter="this.sendArticleName" type="text" id="articleName" class="mr-2 border border-gray-300 focus:ring-blue-500 focus:bg-white focus:border-blue-500 rounded-full" placeholder="Wikipedia article name......">
                 <button @click="this.sendArticleName" class="rounded p-1 md:p-2 bg-green-600 text-white hover:bg-green-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                 </button>

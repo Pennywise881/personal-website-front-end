@@ -78,7 +78,7 @@ export default{
     setSection(text, section)
     { 
       var spans = document.getElementsByTagName('span');
-      console.log(text, section);
+      // console.log(text, section);
       this.section = text;
 
       for (let i = 0; i < spans.length; i++) {
