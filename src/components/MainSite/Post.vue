@@ -1,7 +1,7 @@
 <template>
     <div class="container p-5 w-full md:w-4/6 h-screen">
         <div v-for="post in this.posts" class="p-6 bg-white border-2 border-gray-200 rounded-lg shadow-md mb-5">
-            <router-link v-if="post.name" :to="{ name: post.name }">
+            <router-link v-if="post.project_link" :to="{ name: post.project_link }">
             <div class="flex items-center">
                 <p class="text-xl md:text-2xl font-bold text-red-800 capitalize hover:underline mr-3">{{post.title}}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -18,7 +18,7 @@
                 </svg>
             </div> -->
             <h5 v-else class="text-xl md:text-2xl font-bold text-red-800 capitalize">{{post.title}}</h5>
-            <p class="italic text-gray-500 mb-2">Last Edit: {{this.getFormatedDate(post.last_modified)}}</p>
+            <p class="italic text-gray-500 mb-2">Published: {{this.getFormatedDate(post.publish_date)}}</p>
             <p :id="post.key+'-text'" class="text-sm md:text-base mb-3 font-normal text-gray-700 text-justify line-clamp-2" v-html="post.text"></p>
             <button :id="post.key+'-btn-expand'" @click="this.expandCollapseText(post.key, $event)" class="inline-flex items-center text-sm px-2 py-1 md:px-3 md:py-2 font-bold text-center text-white bg-red-800 rounded-sm md:rounded-lg hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300">
                 Read More
@@ -60,11 +60,11 @@ export default{
     methods:{
         getPosts()
         {
-            // console.log('From Post.vue:', this.section);
+            console.log('From Post.vue:', this.section);
             axios
             .get(`/api/v1/mainsite/get-posts/${this.section}`)
             .then((response) =>{
-                // console.log(response.data);
+                console.log(response.data);
                 this.posts = [];
                 this.posts = response.data
             })

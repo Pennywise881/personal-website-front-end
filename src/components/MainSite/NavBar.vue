@@ -3,11 +3,11 @@
     <div class="md:hidden grid grid-cols-5 gap-4">
       <div v-for="item in this.navItems">
         <div v-if="item.text === 'zamansprojects'" class="flex justify-center">
-          <img @click="this.setSection('blog', 'home')" src="../../../src/assets/img.png" alt="img" class="rounded-full absolute hover:underline hover:cursor-pointer w-20 border-2 border-red-600">  
+          <img @click="this.setPage('blog', 'home')" src="../../../src/assets/img.png" alt="img" class="rounded-full absolute hover:underline hover:cursor-pointer w-20 border-2 border-red-600">  
         </div>
         <div v-else class="flex justify-between uppercase">
           <p>
-            <span @click="this.setSection(item.text, item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+            <span @click="this.setPage(item.text, item.page)" class="hover:underline hover:cursor-pointer hover:text-red-800">
               {{item.text}}
             </span>
           </p>
@@ -18,12 +18,12 @@
     <div class="hidden md:block">
       <div class="flex justify-between">
         <div class="flex">
-          <p @click="this.setSection('blog', 'home')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
+          <p @click="this.setPage('blog', 'home')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
         </div>
         <div class="flex text-lg font-bold uppercase items-center">
           <div v-for="item in this.navItems">
             <p v-if="item.text !=='zamansprojects'" class="self-center px-10 ">
-              <span @click="this.setSection(item.text, item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+              <span @click="this.setPage(item.text, item.page)" class="hover:underline hover:cursor-pointer hover:text-red-800">
                 {{item.text}}
               </span>
             </p>
@@ -46,48 +46,48 @@ export default{
       [
         {
           text: 'blog',
-          section: 'home',
+          page: 'blog',
         }, 
         {
           text: 'ai-ml',
-          section: 'ai-ml',
+          page: 'ai-ml',
         },
         {
           text : 'zamansprojects',
-          section : 'home',
+          page : 'home',
         },
         {
           text: 'web',
-          section: 'web-dev',
+          page: 'web-dev',
         }, 
         {
           text: 'games',
-          section: 'home'
+          page: 'games'
         },
       ],
-      section: 'home',
+      page: 'home',
     }
   },  
   mounted(){
-    this.setSection('blog', 'home');
-    // this.$emit('change-section', this.section);
-    // this.$store.commit("SET_SECTION", this.section);
-    // router.push({name:this.section});
+    this.setPage('blog', 'home');
+    // this.$emit('change-page', this.page);
+    // this.$store.commit("SET_page", this.page);
+    // router.push({name:this.page});
   },
   methods:{
-    setSection(text, section)
+    setPage(text, page)
     { 
       var spans = document.getElementsByTagName('span');
-      // console.log(text, section);
-      this.section = text;
+      // console.log(text, page);
+      this.page = text;
 
       for (let i = 0; i < spans.length; i++) {
-        if(spans[i].innerHTML === this.section)spans[i].className = "underline cursor-pointer text-red-800";
+        if(spans[i].innerHTML === this.page)spans[i].className = "underline cursor-pointer text-red-800";
         else spans[i].className = 'hover:underline hover:cursor-pointer hover:text-red-800'; 
       }
 
-      // this.$emit('change-section', section);
-      router.push({name: section});
+      // this.$emit('change-page', page);
+      router.push({name: page});
     }
   }
 }
