@@ -1,30 +1,33 @@
 <template>
   <div class="font-base">
     <!-- <NavBar @change-section="changeSection($event)"/> -->
+    <NavBar />
     <router-view />
     <!-- <div class="flex">
         <SideBar />
         <Post :section="this.section"/>
     </div> -->
-    <!-- <Footer /> -->
+    <Footer />
+    
   </div>
 </template>
 
 <script>
 import axios from "axios";
-// import Footer from "./components/MainSite/Footer.vue";
-// import NavBar from "./components/MainSite/NavBar.vue";
+import Footer from "./components/MainSite/Footer.vue";
+import NavBar from "./components/MainSite/NavBar.vue";
 // import Post from './components/MainSite/Post.vue';
 // import SideBar from './components/MainSite/SideBar.vue';
 
 export default{
   name: "App",
   components:{
-    // NavBar,
+    NavBar,
     // Post,
     // SideBar,
-    // Footer
-  },
+    Footer,
+    NavBar
+},
   // data(){
   //   return{
   //     section: 'blog',

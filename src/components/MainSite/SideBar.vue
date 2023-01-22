@@ -1,7 +1,7 @@
 <template>
-    <div class="hidden md:block sticky top-0 h-screen w-64 border-r-2 border-gray-200">
+    <div class="hidden md:block w-64 border-r-2 border-gray-200 min-h-screen">
         <div class="flex flex-col justify-between py-4 px-3 opacity-75 hover:opacity-100">
-            <div style="height:80vh">
+            <div>
                 <ul class="mt-5">
                     <li>
                         <img class="m-auto rounded-full border-4 border-red-600 shadow-sm w-32" src="../../../src/assets/img.png" alt="user image" />

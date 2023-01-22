@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
         <SideBar />
-        <Post section='game-dev'/>
+        <Post section='games'/>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import SideBar from '../../components/MainSite/SideBar.vue';
 
 
 export default{
-    name: 'Gamedev',
+    name: 'Games',
     components:{
     SideBar,
     Post
