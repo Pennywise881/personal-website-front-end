@@ -2,7 +2,7 @@
     <div class="md:hidden h-screen">
 
     </div>
-    <footer class="bg-red-900 text-center text-white p-2 md:p-5 mt-10">
+    <footer class="bg-red-900 text-center text-white p-2 md:p-5">
         <div class="hidden md:block">
             <span class="text-sm">© 2023 <a href="#" class="hover:underline">zamansprojects™</a>. All Rights Reserved.
             </span>

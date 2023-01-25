@@ -49,7 +49,7 @@ export default{
             if (this.section === 'games')return;
 
             axios
-            .get(`/api/v1/mainsite/get-posts/${this.section}`)
+            .get(`/api/v1/home/get-posts/${this.section}`)
             .then((response) =>{
                 // console.log(response.data);
                 this.posts = [];

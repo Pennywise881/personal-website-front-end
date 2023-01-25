@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
         <SideBar />
-        <Post section='nlp'/>
+        <Post section='ai-ml'/>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import SideBar from '../../components/MainSite/SideBar.vue';
 
 
 export default{
-    name: 'NLP',
+    name: 'AIML',
     components:{
     SideBar,
     Post

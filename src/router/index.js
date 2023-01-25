@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
     {path: '/', name: 'blog', component: () => import('@/views/MainSite/Blog.vue')},
-    {path: '/nlp', name: 'nlp', component: () => import('@/views/MainSite/NLP.vue')},
+    {path: '/ai-ml', name: 'ai-ml', component: () => import('@/views/MainSite/AIML.vue')},
     {path: '/web', name: 'web', component: () => import('@/views/MainSite/Web.vue')},
     {path: '/games', name: 'games', component: () => import('@/views/MainSite/Games.vue')},
     {path: '/movie-theatre-project', name:'mtp', component: () => import('@/views/MovieTheatreProject/MTP.vue')},

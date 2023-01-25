@@ -50,8 +50,8 @@ export default{
           section: 'blog',
         }, 
         {
-          text: 'nlp',
-          section: 'nlp',
+          text: 'ai-ml',
+          section: 'ai-ml',
         },
         {
           text : 'zamansprojects',
