@@ -1,8 +1,9 @@
 <template>
-    <div class="container p-5 w-full md:w-4/6 mb-10">
+    <div class="container p-2 md:p-5 w-full md:w-4/6 mb-10">
         <div v-if="this.section === 'games'" class="flex justify-center">
            <img src="https://media.giphy.com/media/S675CRFMUX7el7gyu7/giphy.gif" alt="gif">
         </div>
+
         <div v-for="post in this.posts" class="p-6 bg-white border-2 border-gray-200 rounded-lg shadow-md mb-5">
             <router-link v-if="post.project_link" :to="{ name: post.project_link }">
                 <div class="flex items-center">
@@ -17,6 +18,7 @@
             <p class="italic text-gray-500 mb-2">Published: {{this.getFormatedDate(post.publish_date)}}</p>
             <p :id="post.key+'-text'" class="text-sm md:text-base mb-3 font-normal text-gray-700 text-justify" v-html="post.text"></p>
         </div>
+    
     </div>
     
 </template>
@@ -42,6 +44,9 @@ export default{
     //         this.getPosts();
     //     }
     // },
+    // updated(){
+    //     this.addBulletPointsToLists();
+    // },
     methods:{
         getPosts()
         {   
@@ -51,7 +56,7 @@ export default{
             axios
             .get(`/api/v1/home/get-posts/${this.section}`)
             .then((response) =>{
-                // console.log(response.data);
+                console.log(response.data);
                 this.posts = [];
                 this.posts = response.data
             })

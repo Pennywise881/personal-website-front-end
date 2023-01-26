@@ -2,6 +2,7 @@
   <div class="font-base">
     <!-- <NavBar @change-section="changeSection($event)"/> -->
     <NavBar />
+    <Social />
     <router-view />
     <!-- <div class="flex">
         <SideBar />
@@ -16,6 +17,7 @@
 import axios from "axios";
 import Footer from "./components/MainSite/Footer.vue";
 import NavBar from "./components/MainSite/NavBar.vue";
+import Social from "./components/MainSite/Social.vue";
 // import Post from './components/MainSite/Post.vue';
 // import SideBar from './components/MainSite/SideBar.vue';
 
@@ -26,7 +28,8 @@ export default{
     // Post,
     // SideBar,
     Footer,
-    NavBar
+    NavBar,
+    Social
 },
   // data(){
   //   return{
