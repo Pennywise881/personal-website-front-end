@@ -15,7 +15,7 @@
       </div>
     </div> -->
     <div class="md:hidden flex justify-between items-center">
-      <p class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
+      <p @click="this.setSection('blog', 'home')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
       <p>
         <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase">
           {{this.section}}
@@ -27,11 +27,13 @@
           <svg class="w-8 h-8 fill-current close-icon hidden" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
         </button>
         <div class="font-normal absolute shadow-md mt-2 right-0 mr-5 dropdown-menu hidden">
-          <div class="bg-zinc-200 border-4 border-white p-2 rounded">
+          <div class="bg-zinc-200 border-4 border-white rounded">
             <p v-for="item in this.navItems" class="uppercase font-semibold">
-              <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase" v-if="item.text!=this.section && item.text!='zamansprojects'" >
-                {{item.text}}
-              </span>
+              <div v-if="item.text!=this.section && item.text!='zamansprojects'" class="p-2">
+                <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase">
+                  {{item.text}}
+                </span>
+              </div>
             </p>
           </div>
         </div>

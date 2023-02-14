@@ -10,7 +10,7 @@
                 Follow
                 <div class="font-normal absolute shadow-md mt-2 right-20 mr-5 hidden socials-menu">
                     <div class="bg-zinc-200 border-4 border-white px-2 rounded">
-                        <div v-for="social in this.socials" class="flex my-2">
+                        <div v-for="social in this.socials" class="flex px-1 py-2">
                             <img width="16" :alt="social.alt" :src="social.src">
                             <p class="ml-2 hover:text-red-800 hover:underline hover:cursor-pointer text-black">{{social.title}}</p>
                         </div>
