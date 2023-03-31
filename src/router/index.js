@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-    {path: '/', name: 'blog', component: () => import('@/views/MainSite/Blog.vue')},
+    {path: '/', name: 'home', component: () => import('@/views/MainSite/Home.vue')},
+    // {path: '/', name: 'blog', component: () => import('@/views/MainSite/Blog.vue')},
     // {path: '/', name: 'tg', component: () => import('@/views/TriviaGame/TGHome.vue')},
     {path: '/ai-ml', name: 'ai-ml', component: () => import('@/views/MainSite/AIML.vue')},
     {path: '/web', name: 'web', component: () => import('@/views/MainSite/Web.vue')},

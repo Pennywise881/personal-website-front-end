@@ -60,14 +60,27 @@
 </template>
 
 <script>
-import router from '../../router';
+// import router from '../../router';
+import { mapState } from 'vuex';
 
 export default{
-
   name: "NavBar",
+  computed:{
+    ...mapState(['postType']),
+    // someComputedLocalState()
+    // {
+    //   return "Yo"
+    // }
+  },
+  watch:{
+    postType(val, oldVal)
+    {
+      console.log(val, oldVal);
+    }
+  },
   data(){
     return{
-      section: 'blog',
+      section: '',
       navItems:
       [
         {
@@ -94,7 +107,7 @@ export default{
     }
   },  
   mounted(){
-    this.setSection('blog');
+    this.setSection(null);
     // this.$emit('change-section', this.section);
     // this.$store.commit("SET_section", this.section);
     // router.push({name:this.section});
@@ -108,9 +121,21 @@ export default{
     },
     setSection(section)
     { 
+      if (section === null)
+      {
+        // var section = this.$store.state.postType;
+        // console.log("This is the section "+section);
+        this.$store.commit('SET_POST_TYPE', 'blog');
+        // this.sectio
+        // this.section = pos
+      }
+      else this.$store.commit('SET_POST_TYPE', section)
+      // else this.section = section;
+
+      this.section = this.$store.state.postType
+
       var spans = document.getElementsByTagName('span');
       // console.log(text, section);
-      this.section = section;
 
       for (let i = 0; i < spans.length; i++) {
         if(spans[i].innerHTML === this.section)spans[i].className = "underline cursor-pointer text-red-800 font-semibold uppercase";
@@ -118,7 +143,7 @@ export default{
       }
 
       // this.$emit('change-section', section);
-      router.push({name: section});
+      // router.push({name: section});
     }
   }
 }

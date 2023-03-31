@@ -1,9 +1,9 @@
 <template>
   <div class="font-base">
-    <NavBar />
-    <Social />
+    <!-- <NavBar /> -->
+    <!-- <Social /> -->
     <router-view />
-    <Footer />
+    <!-- <Footer /> -->
     <!-- <router-view /> -->
   </div>
 </template>

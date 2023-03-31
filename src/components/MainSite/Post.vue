@@ -4,8 +4,8 @@
            <img src="https://media.giphy.com/media/S675CRFMUX7el7gyu7/giphy.gif" alt="gif">
         </div>
 
-        <div v-for="post in this.posts" class="p-6 bg-white border-2 border-gray-200 rounded-lg shadow-md mb-5">
-            <router-link v-if="post.project_route" to="http://localhost:5173/movie-theatre-project" target="_blank">
+        <!-- <div v-for="post in this.posts" class="p-6 bg-white border-2 border-gray-200 rounded-lg shadow-md mb-5">
+            <router-link v-if="post.project_route" :to="{ name: post.project_route }">
                 <div class="flex items-center">
                     <p class="text-xl md:text-2xl font-bold text-red-800 capitalize hover:underline mr-3">{{post.title}}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -26,7 +26,7 @@
             <h5 v-else class="text-xl md:text-2xl font-bold text-red-800 capitalize">{{post.title}}</h5>
             <p class="italic text-gray-500 mb-2">Published: {{this.getFormatedDate(post.publish_date)}}</p>
             <p :id="post.key+'-text'" class="text-sm md:text-base mb-3 font-normal text-gray-700 text-justify" v-html="post.text"></p>
-        </div>
+        </div> -->
     
     </div>
     
@@ -35,12 +35,21 @@
 <script>
 import axios from 'axios';
 // import router from '../../router';
+// import { mapState } from 'vuex';
 
 export default{
     name: "Post",
-    props: ['section'],
+    // props: ['section'],
+    // computed:{
+    //     ...mapState(['postType']),
+    //     someComputedLocalState()
+    //     {
+    //         return "Yo";
+    //     }
+    // },
     data() {
         return {
+            section: null,
             posts: [],
             postButtonStyling: 'inline-flex items-center text-sm px-2 py-1 md:px-3 md:py-2 font-medium text-center text-white bg-red-800 rounded-sm md:rounded-lg hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300'
         }
@@ -50,19 +59,21 @@ export default{
     },
     methods:{
         getPosts()
-        {   
-            if (this.section === 'games')return;
+        {      
+            // console.log("This is from Post.vue:", this.section);
+            // if (this.section === 'games')return;
 
-            axios
-            .get(`/api/v1/home/get-posts/${this.section}`)
-            .then((response) =>{
-                // console.log(response.data);
-                this.posts = [];
-                this.posts = response.data
-            })
-            .catch((error) =>{
-                console.error(error);
-            })
+
+            // axios
+            // .get(`/api/v1/home/get-posts/${this.section}`)
+            // .then((response) =>{
+            //     // console.log(response.data);
+            //     this.posts = [];
+            //     this.posts = response.data
+            // })
+            // .catch((error) =>{
+            //     console.error(error);
+            // })
             
         },
         getFormatedDate(date)
