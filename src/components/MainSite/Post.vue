@@ -5,7 +5,7 @@
         </div>
 
         <div v-for="post in this.posts" class="p-6 bg-white border-2 border-gray-200 rounded-lg shadow-md mb-5">
-            <router-link v-if="post.project_route" :to="{ name: post.project_route }">
+            <router-link v-if="post.project_route" to="http://localhost:5173/movie-theatre-project" target="_blank">
                 <div class="flex items-center">
                     <p class="text-xl md:text-2xl font-bold text-red-800 capitalize hover:underline mr-3">{{post.title}}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">

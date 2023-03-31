@@ -1,15 +1,10 @@
 <template>
   <div class="font-base">
-    <!-- <NavBar @change-section="changeSection($event)"/> -->
     <NavBar />
     <Social />
     <router-view />
-    <!-- <div class="flex">
-        <SideBar />
-        <Post :section="this.section"/>
-    </div> -->
     <Footer />
-    
+    <!-- <router-view /> -->
   </div>
 </template>
 
@@ -18,31 +13,17 @@ import axios from "axios";
 import Footer from "./components/MainSite/Footer.vue";
 import NavBar from "./components/MainSite/NavBar.vue";
 import Social from "./components/MainSite/Social.vue";
-// import Post from './components/MainSite/Post.vue';
-// import SideBar from './components/MainSite/SideBar.vue';
+import TGHome from "./views/TriviaGame/TGHome.vue";
 
 export default{
   name: "App",
   components:{
     NavBar,
-    // Post,
-    // SideBar,
     Footer,
     NavBar,
-    Social
+    Social,
+    TGHome,
 },
-  // data(){
-  //   return{
-  //     section: 'blog',
-  //   }
-  // },
-  // methods:{
-  //   changeSection(section)
-  //   { 
-  //     this.section = section;
-  //     // console.log('From App.vue:', this.section);
-  //   }
-  // },
   beforeCreate()
   {
     this.$store.commit("INIT_STORE");
