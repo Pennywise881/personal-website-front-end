@@ -2,7 +2,7 @@
   <nav class="p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200">
     <!-- Mobile view navbar -->
     <div class="md:hidden flex justify-between items-center">
-      <p @click="this.setSection(this.section)" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
+      <p @click="this.setSection('blog')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
       <p class="underline cursor-pointer text-red-800 font-semibold uppercase">
         <span @click="this.setSection(this.section)">
           {{this.section}}
@@ -31,7 +31,7 @@
     <div class="hidden md:block">
       <div class="flex justify-between">
         <div class="flex">
-          <p @click="this.setSection(this.section)" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
+          <p @click="this.setSection('blog')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
         </div>
         <div class="flex text-lg font-bold uppercase items-center">
           <div v-for="item in this.navItems">
