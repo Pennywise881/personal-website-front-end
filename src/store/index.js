@@ -4,7 +4,7 @@ import {v4 as uuidv4} from 'uuid'
 export default createStore({
     state:{
         authId: '',
-        postType: '',
+        section: '',
     },
     mutations:{
         INIT_STORE(state)
@@ -21,9 +21,9 @@ export default createStore({
         {
             localStorage.setItem("bookingData", JSON.stringify(bookingData));
         },
-        SET_POST_TYPE(state, postType)
+        SET_SECTION(state, section)
         {
-            state.postType = postType;
+            state.section = section;
         }
     },
     actions:{
@@ -36,6 +36,9 @@ export default createStore({
         authId: state =>{
             state.authId = localStorage.getItem('authId');
             return state.authId;
+        },
+        currentSection: state=>{
+            return state.section;
         }
     }
 })

@@ -1,28 +1,17 @@
 <template>
   <div class="font-base">
-    <!-- <NavBar /> -->
-    <!-- <Social /> -->
     <router-view />
-    <!-- <Footer /> -->
-    <!-- <router-view /> -->
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import Footer from "./components/MainSite/Footer.vue";
-import NavBar from "./components/MainSite/NavBar.vue";
-import Social from "./components/MainSite/Social.vue";
-import TGHome from "./views/TriviaGame/TGHome.vue";
-
 export default{
   name: "App",
   components:{
-    NavBar,
     Footer,
-    NavBar,
-    Social,
-    TGHome,
 },
   beforeCreate()
   {

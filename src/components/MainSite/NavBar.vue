@@ -1,23 +1,10 @@
 <template>
   <nav class="p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200">
-    <!-- <div class="md:hidden grid grid-cols-5 gap-4">
-      <div v-for="item in this.navItems">
-        <div v-if="item.text === 'zamansprojects'" class="flex justify-center">
-          <img @click="this.setSection('blog', 'home')" src="../../../src/assets/img.png" alt="img" class="rounded-full absolute hover:underline hover:cursor-pointer w-20 border-2 border-red-600">  
-        </div>
-        <div v-else class="flex justify-between uppercase">
-          <p>
-            <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800">
-              {{item.text}}
-            </span>
-          </p>
-        </div>
-      </div>
-    </div> -->
+    <!-- Mobile view navbar -->
     <div class="md:hidden flex justify-between items-center">
-      <p @click="this.setSection('blog', 'home')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
-      <p>
-        <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase">
+      <p @click="this.setSection(this.section)" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
+      <p class="underline cursor-pointer text-red-800 font-semibold uppercase">
+        <span @click="this.setSection(this.section)">
           {{this.section}}
         </span>
       </p>
@@ -29,9 +16,9 @@
         <div class="font-normal absolute shadow-md mt-2 right-0 mr-5 dropdown-menu hidden">
           <div class="bg-zinc-200 border-4 border-white rounded">
             <p v-for="item in this.navItems" class="uppercase font-semibold">
-              <div v-if="item.text!=this.section && item.text!='zamansprojects'" class="p-2">
-                <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase">
-                  {{item.text}}
+              <div v-if="item!=this.section " class="px-4 py-2">
+                <span @click="this.setSection(item)" class="hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase">
+                  {{item}}
                 </span>
               </div>
             </p>
@@ -40,16 +27,17 @@
       </div>
     </div>
 
+    <!-- Desktop view navbar -->
     <div class="hidden md:block">
       <div class="flex justify-between">
         <div class="flex">
-          <p @click="this.setSection('blog', 'home')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
+          <p @click="this.setSection(this.section)" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
         </div>
         <div class="flex text-lg font-bold uppercase items-center">
           <div v-for="item in this.navItems">
-            <p v-if="item.text !=='zamansprojects'" class="self-center px-10 ">
-              <span @click="this.setSection(item.section)" class="hover:underline hover:cursor-pointer hover:text-red-800">
-                {{item.text}}
+            <p class="self-center px-10 ">
+              <span @click="this.setSection(item)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+                {{item}}
               </span>
             </p>
           </div>
@@ -60,90 +48,55 @@
 </template>
 
 <script>
-// import router from '../../router';
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 
 export default{
   name: "NavBar",
-  computed:{
-    ...mapState(['postType']),
-    // someComputedLocalState()
-    // {
-    //   return "Yo"
-    // }
-  },
-  watch:{
-    postType(val, oldVal)
-    {
-      console.log(val, oldVal);
-    }
-  },
+  // computed:{
+  //   ...mapState(['section']),
+  //   // someComputedLocalState()
+  //   // {
+  //   //   return "Yo"
+  //   // }
+  // },
+  // watch:{
+  //   postType(val, oldVal)
+  //   {
+  //     console.log(val, oldVal);
+  //     // this.section = val;
+  //   }
+  // },
   data(){
     return{
       section: '',
-      navItems:
-      [
-        {
-          text: 'blog',
-          section: 'blog',
-        }, 
-        {
-          text: 'ai-ml',
-          section: 'ai-ml',
-        },
-        {
-          text : 'zamansprojects',
-          section : this.section,
-        },
-        {
-          text: 'web',
-          section: 'web',
-        }, 
-        {
-          text: 'games',
-          section: 'games'
-        },
-      ],
+      navItems: ['blog', 'ai-ml', 'web', 'games']
     }
   },  
   mounted(){
     this.setSection(null);
-    // this.$emit('change-section', this.section);
-    // this.$store.commit("SET_section", this.section);
-    // router.push({name:this.section});
   },
   methods:{
+    
     onMenuClick()
     {
       document.querySelector('.hamburger-icon').classList.toggle('hidden');
       document.querySelector('.close-icon').classList.toggle('hidden');
       document.querySelector('.dropdown-menu').classList.toggle('hidden');
     },
+
     setSection(section)
     { 
-      if (section === null)
-      {
-        // var section = this.$store.state.postType;
-        // console.log("This is the section "+section);
-        this.$store.commit('SET_POST_TYPE', 'blog');
-        // this.sectio
-        // this.section = pos
-      }
-      else this.$store.commit('SET_POST_TYPE', section)
-      // else this.section = section;
+      if (section === null) this.$store.commit('SET_SECTION', 'blog');
+      else this.$store.commit('SET_SECTION', section)
 
-      this.section = this.$store.state.postType
+      this.section = this.$store.getters.currentSection;
 
       var spans = document.getElementsByTagName('span');
-      // console.log(text, section);
 
       for (let i = 0; i < spans.length; i++) {
         if(spans[i].innerHTML === this.section)spans[i].className = "underline cursor-pointer text-red-800 font-semibold uppercase";
         else spans[i].className = 'hover:underline hover:cursor-pointer hover:text-red-800 font-semibold uppercase'; 
       }
-
-      // this.$emit('change-section', section);
-      // router.push({name: section});
     }
   }
 }
