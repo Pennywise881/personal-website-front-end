@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-10 md:mt-0 py-1 px-20 bg-red-600 flex justify-between">
+    <div class="md:mt-0 py-1 px-20 bg-red-600 flex justify-between">
         <div>
             <p class="hidden md:block text-sm font-bold text-white">
                 <span class="mr-5 hover:underline cursor-pointer">Gift Cards</span>
@@ -25,7 +25,7 @@
                         <input class="w-96 px-5 shadow-md rounded-full border-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" type="text" placeholder="Search by location, zip or movie">                
                     </div>
                     <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="text-sm md:text-base text-sm md:text-base text-white hover:text-red-600 hover:underline font-bold">
+                        <div class="text-sm md:text-base text-white hover:text-red-600 hover:underline font-bold">
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
