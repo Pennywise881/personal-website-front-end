@@ -49,7 +49,7 @@ export default{
                 {
                     title: 'Twitter',
                     alt: 'twitter-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg'
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Logo_of_Twitter%2C_Inc..svg'
                 },
             ]
         }
