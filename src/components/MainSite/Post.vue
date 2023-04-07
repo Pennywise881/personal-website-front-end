@@ -79,7 +79,7 @@ export default{
                 // console.log(response.data);
                 this.posts = [];
                 this.posts = response.data
-                // this.gotPosts = true;
+                this.gotPosts = true;
             })
             .catch((error) =>{
                 console.error(error);
