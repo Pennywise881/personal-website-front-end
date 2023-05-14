@@ -5,6 +5,7 @@ export default createStore({
     state:{
         authId: '',
         section: '',
+        showNavbar: true,
     },
     mutations:{
         INIT_STORE(state)
@@ -24,6 +25,11 @@ export default createStore({
         SET_SECTION(state, section)
         {
             state.section = section;
+        },
+        SET_SHOWNAVBAR(state, showNavbar)
+        {   
+            // console.log("This");
+            state.showNavbar = showNavbar;
         }
     },
     actions:{
@@ -33,12 +39,15 @@ export default createStore({
 
     },
     getters:{
-        authId: state =>{
+        authId: state => {
             state.authId = localStorage.getItem('authId');
             return state.authId;
         },
-        currentSection: state=>{
+        currentSection: state=> {
             return state.section;
+        },
+        isNavbar: state=>{
+            return state.showNavbar;
         }
     }
 })

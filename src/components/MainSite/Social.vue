@@ -1,5 +1,5 @@
 <template>
-    <div class="md:hidden py-10 px-5 flex">
+    <div class="md:hidden pt-28 pb-10 px-5 flex w-full">
         <img class="rounded-full border-2 border-red-600 shadow-sm w-16" src="../../../src/assets/img.png" alt="user image" />
         <div class="flex flex-col justify-center">
             <p class="mx-2 font-bold">Nafi Uz Zaman</p>
@@ -43,12 +43,12 @@ export default{
                 {
                     title: 'YouTube',
                     alt: 'youtube-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg'
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/5/52/YouTube_social_white_circle_%282017%29.svg'
                 },
                 {
                     title: 'Twitter',
                     alt: 'twitter-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg'
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg'
                 },
             ]
         }

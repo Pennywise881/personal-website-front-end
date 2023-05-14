@@ -20,7 +20,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // window.scroll({ top: 0, left: 0, behavior: "auto" });
+    window.scroll({ top: 0, left: 0, behavior: "auto" });
     next()
 })
 

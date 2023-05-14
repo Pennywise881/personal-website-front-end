@@ -1,7 +1,25 @@
 <template>
-  <nav class="p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200">
+  <nav class="hidden md:block p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200" v-show="showNavbar">
+    <!-- Desktop view navbar -->
+    <div class="flex justify-between">
+      <div class="flex">
+        <p @click="this.setSection('blog')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
+      </div>
+      <div class="flex text-lg font-bold uppercase items-center">
+        <div v-for="item in this.navItems">
+          <p class="self-center px-10 ">
+            <span @click="this.setSection(item)" class="hover:underline hover:cursor-pointer hover:text-red-800">
+              {{item}}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="md:hidden p-5 font-bold w-full border-b-2 border-red-600 bg-zinc-200 fixed">
     <!-- Mobile view navbar -->
-    <div class="md:hidden flex justify-between items-center">
+    <div class="flex justify-between items-center">
       <p @click="this.setSection('blog')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
       <p class="underline cursor-pointer text-red-800 font-semibold uppercase">
         <span @click="this.setSection(this.section)">
@@ -21,24 +39,6 @@
                   {{item}}
                 </span>
               </div>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Desktop view navbar -->
-    <div class="hidden md:block">
-      <div class="flex justify-between">
-        <div class="flex">
-          <p @click="this.setSection('blog')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects</p>
-        </div>
-        <div class="flex text-lg font-bold uppercase items-center">
-          <div v-for="item in this.navItems">
-            <p class="self-center px-10 ">
-              <span @click="this.setSection(item)" class="hover:underline hover:cursor-pointer hover:text-red-800">
-                {{item}}
-              </span>
             </p>
           </div>
         </div>
@@ -69,14 +69,20 @@ export default{
   data(){
     return{
       section: '',
-      navItems: ['blog', 'ai-ml', 'web', 'games']
+      navItems: ['blog', 'ai-ml', 'web', 'games'],
+      showNavbar: true
     }
   },  
   mounted(){
     this.setSection(null);
+    window.addEventListener('scroll', this.handleScroll)
   },
   methods:{
-    
+    handleScroll()
+    {
+      this.showNavbar = window.pageYOffset === 0;
+      this.$store.commit('SET_SHOWNAVBAR', this.showNavbar);
+    },
     onMenuClick()
     {
       document.querySelector('.hamburger-icon').classList.toggle('hidden');
@@ -86,7 +92,7 @@ export default{
 
     setSection(section)
     { 
-      if (section === null) this.$store.commit('SET_SECTION', 'blog');
+      if (section === null)this.$store.commit('SET_SECTION', 'blog');
       else this.$store.commit('SET_SECTION', section)
 
       this.section = this.$store.getters.currentSection;

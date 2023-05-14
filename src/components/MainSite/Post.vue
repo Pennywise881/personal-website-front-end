@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-2 md:p-5 w-full md:w-4/6 mb-10">
+    <div class="container p-2 md:p-5 w-full md:ml-auto md:w-5/6 mb-10">
         <div v-if="this.section === 'games'" class="flex justify-center">
            <img src="https://media.giphy.com/media/S675CRFMUX7el7gyu7/giphy.gif" alt="gif">
         </div>
@@ -8,18 +8,16 @@
             <router-link v-if="post.project_route" :to="{ name: post.project_route }">
                 <div class="flex items-center">
                     <p class="text-xl md:text-2xl font-bold text-red-800 capitalize hover:underline mr-3">{{post.title}}</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
-                        <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
                 </div>
             </router-link>
             <a v-else-if="post.project_link" :href="post.project_link" target="_blank">
                 <div class="flex items-center">
                     <p class="text-xl md:text-2xl font-bold text-red-800 capitalize hover:underline mr-3">{{post.title}}</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
-                        <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
                 </div>
             </a>
@@ -69,7 +67,7 @@ export default{
     methods:{
         getPosts()
         {      
-            console.log("This is from Post.vue:", this.postType);
+            // console.log("This is from Post.vue:", this.postType);
             this.gotPosts = false;
             if (this.postType === 'games')return;
             
