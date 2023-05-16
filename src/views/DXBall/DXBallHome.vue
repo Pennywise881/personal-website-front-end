@@ -151,7 +151,7 @@ export default {
         gameManager = new GameManager();
         gameManager.startNewGame();
 
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
         p.createCanvas(p.windowWidth, p.windowHeight);
       };
 

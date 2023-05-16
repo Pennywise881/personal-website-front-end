@@ -96,7 +96,7 @@ export default {
     },
 
     setSection(section) {
-      if (section === null) this.$store.commit('SET_SECTION', 'games');
+      if (section === null) this.$store.commit('SET_SECTION', 'blog');
       else this.$store.commit('SET_SECTION', section)
 
       this.section = this.$store.getters.currentSection;
