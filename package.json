@@ -12,6 +12,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "axios": "^1.2.1",
     "flowbite": "^1.5.5",
+    "p5": "^1.6.0",
     "pinia": "^2.0.33",
     "swiper": "^8.4.5",
     "uuid": "^9.0.0",
