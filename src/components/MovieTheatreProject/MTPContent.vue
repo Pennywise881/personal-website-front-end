@@ -11,32 +11,10 @@
                     </div>
 
                     <section>
-                        <!-- <div class="md:hidden relative mt-2 md:mt-5 rounded-lg border border-gray-300 p-2">
-                            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none" @click="carouselButtonClick('prev')">
-                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                                </span>
-                            </button>
-                            <div class="px-5 py-2 grid grid-cols-3 gap-2">
-                                <router-link v-for="movie in this.smallCarouselSlides[this.smallSlideIndex]"
-                                class="hover:opacity-75 hover:text-red-700"
-                                :to="{name:'Showtime', params: {key: movie.key, slug: movie.slug}}"
-                                 >
-                                    <img class="rounded" :src="movie.poster" :alt="movie.title">
-                                    <p class="font-bold text-sm">{{movie.title}}</p>
-                                </router-link>
-                            </div>
-                            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none" @click="carouselButtonClick('next')">
-                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                                </span>
-                            </button>
-                        </div> -->
-
-                        <div class="relative overflow-hidden rounded-lg border border-gray-300 p-2">
+                        <div class="md:hidden relative mt-2 md:mt-5 rounded-lg border border-gray-300 p-2">
                             <button type="button"
-                                class="mx-5 absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
-                                @click="carouselButtonClick('left')">
+                                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+                                @click="carouselButtonClick('prev')">
                                 <span
                                     class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
                                     <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
@@ -46,33 +24,30 @@
                                     </svg>
                                 </span>
                             </button>
-                            <!-- The cards -->
-                            <div class="mx-10 md:mx-20 overflow-x-hidden whitespace-nowrap scroll-smooth" id="carousel">
-                                <router-link v-for="movie in this.arrivals"
-                                    class="inline-block mr-2 md:mr-4 hover:opacity-75 hover:text-red-700"
+                            <div class="px-5 py-2 grid grid-cols-3 gap-2">
+                                <router-link v-for="movie in this.smallCarouselSlides[this.smallSlideIndex]"
+                                    class="hover:opacity-75 hover:text-red-700"
                                     :to="{ name: 'Showtime', params: { key: movie.key, slug: movie.slug } }">
                                     <img class="rounded" :src="movie.poster" :alt="movie.title">
                                     <p class="font-bold text-sm">{{ movie.title }}</p>
                                 </router-link>
                             </div>
                             <button type="button"
-                                class="mx-5 absolute top-0 right-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
-                                @click="carouselButtonClick('right')">
+                                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+                                @click="carouselButtonClick('next')">
                                 <span
                                     class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                    <span
-                                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                        <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 5l7 7-7 7"></path>
-                                        </svg>
-                                    </span>
+                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
                                 </span>
                             </button>
+                        </div>
 
-
-                            <!-- <button type="button"
+                        <div class="hidden md:block relative h-80 overflow-hidden rounded-lg border border-gray-300">
+                            <button type="button"
                                 class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                                 @click="carouselButtonClick('prev')">
                                 <span
@@ -105,7 +80,7 @@
                                             d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </span>
-                            </button> -->
+                            </button>
                         </div>
                     </section>
                 </div>
@@ -117,8 +92,7 @@
                             <div v-for="item in this.featuredItems" class="bg-white rounded-lg hover:text-red-700">
                                 <div class="hover:opacity-75">
                                     <img class="rounded-lg" :src="item.img" alt="featured image" />
-                                    <p class="mt-2 font-bold text-sm md:text-base line-clamp-1 md:line-clamp-0">{{ item.txt
-                                    }}
+                                    <p class="mt-2 font-bold text-sm md:text-base line-clamp-1 md:line-clamp-0">{{ item.txt }}
                                     </p>
                                     <p class="text-xs md:text-sm font-light line-clamp-2 md:line-clamp-0">{{ item.subtxt }}
                                     </p>
@@ -127,7 +101,6 @@
                         </div>
                     </div>
                 </section>
-
                 <div class="p-2 md:p-5">
                     <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">OFFERS</p>
                     <div class="grid grid-cols-3 gap-2">
@@ -169,10 +142,10 @@ export default {
             maxItemsPerSlide: 6,
             maxItemsPerSmallSlide: 3,
             arrivals: [],
-            // carouselSlides: [],
-            // smallCarouselSlides: [],
-            // slideIndex: 0,
-            // smallSlideIndex: 0,
+            carouselSlides: [],
+            smallCarouselSlides: [],
+            slideIndex: 0,
+            smallSlideIndex: 0,
             comingSoon: [],
             featuredItems: [
                 {
@@ -228,50 +201,42 @@ export default {
                     console.error(error);
                 })
         },
-        carouselButtonClick(direction) {
-            // if (button === 'prev') {
-            //     if (this.slideIndex > 0) this.slideIndex -= 1;
-            //     if (this.smallSlideIndex > 0) this.smallSlideIndex -= 1;
-            // }
-            // else if (button === 'next') {
-            //     if (this.slideIndex < this.carouselSlides.length - 1) this.slideIndex += 1;
-            //     if (this.smallSlideIndex < this.smallCarouselSlides.length - 1) this.smallSlideIndex += 1;
-            // }
-            if (direction === "left") document.getElementById('carousel').scrollLeft -= 800;
-            else if (direction === "right") document.getElementById('carousel').scrollLeft += 800;
+        carouselButtonClick(button) {
+            if (button === 'prev') {
+                if (this.slideIndex > 0) this.slideIndex -= 1;
+                if (this.smallSlideIndex > 0) this.smallSlideIndex -= 1;
+            }
+            else if (button === 'next') {
+                if (this.slideIndex < this.carouselSlides.length - 1) this.slideIndex += 1;
+                if (this.smallSlideIndex < this.smallCarouselSlides.length - 1) this.smallSlideIndex += 1;
+            }
         },
         getArrivals() {
             axios
                 .get(`/api/v1/movietheatreproject/get-arrivals`)
                 .then((response) => {
                     this.arrivals = response.data;
+                    // console.log(this.arrivals);
+
+                    var carouselItems = [];
+                    var smallCarouselItems = [];
                     for (let i = 0; i < this.arrivals.length; i++) {
-                        if (this.arrivals[i].title.split(' ').length > 2) {
-                            let title_words = this.arrivals[i].title.split(' ');
-                            this.arrivals[i].title = title_words[0] + " " + title_words[1] + "..."
+                        carouselItems.push(this.arrivals[i]);
+                        smallCarouselItems.push(this.arrivals[i]);
+                        if (carouselItems.length === this.maxItemsPerSlide) {
+                            this.carouselSlides.push(carouselItems);
+                            carouselItems = [];
+                        }
+
+                        if (smallCarouselItems.length === this.maxItemsPerSmallSlide) {
+                            this.smallCarouselSlides.push(smallCarouselItems);
+                            smallCarouselItems = [];
                         }
                     }
-                    // // console.log(this.arrivals);
 
-                    // var carouselItems = [];
-                    // var smallCarouselItems = [];
-                    // for (let i = 0; i < this.arrivals.length; i++) {
-                    //     carouselItems.push(this.arrivals[i]);
-                    //     smallCarouselItems.push(this.arrivals[i]);
-                    //     if (carouselItems.length === this.maxItemsPerSlide) {
-                    //         this.carouselSlides.push(carouselItems);
-                    //         carouselItems = [];
-                    //     }
-
-                    //     if (smallCarouselItems.length === this.maxItemsPerSmallSlide) {
-                    //         this.smallCarouselSlides.push(smallCarouselItems);
-                    //         smallCarouselItems = [];
-                    //     }
-                    // }
-
-                    // this.carouselSlides.push(carouselItems);
-                    // this.smallCarouselSlides.push(smallCarouselItems);
-                    // // console.log(this.carouselSlides);
+                    this.carouselSlides.push(carouselItems);
+                    this.smallCarouselSlides.push(smallCarouselItems);
+                    // console.log(this.carouselSlides);
 
                 })
                 .catch((error) => {
