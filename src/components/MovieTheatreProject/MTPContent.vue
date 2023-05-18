@@ -11,7 +11,7 @@
                     </div>
 
                     <section>
-                        <div class="md:hidden relative mt-2 md:mt-5 rounded-lg border border-gray-300 p-2">
+                        <!-- <div class="md:hidden relative mt-2 md:mt-5 rounded-lg border border-gray-300 p-2">
                             <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none" @click="carouselButtonClick('prev')">
                                 <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
                                     <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -31,34 +31,85 @@
                                     <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                                 </span>
                             </button>
-                        </div>
+                        </div> -->
 
-                        <div class="hidden md:block relative h-80 overflow-hidden rounded-lg border border-gray-300">
-                            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" @click="carouselButtonClick('prev')">
-                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <div class="relative overflow-hidden rounded-lg border border-gray-300 p-2">
+                            <button type="button"
+                                class="mx-5 absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+                                @click="carouselButtonClick('left')">
+                                <span
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <!-- The cards -->
+                            <div class="mx-10 md:mx-20 overflow-x-hidden whitespace-nowrap scroll-smooth" id="carousel">
+                                <router-link v-for="movie in this.arrivals"
+                                    class="inline-block mr-2 md:mr-4 hover:opacity-75 hover:text-red-700"
+                                    :to="{ name: 'Showtime', params: { key: movie.key, slug: movie.slug } }">
+                                    <img class="rounded" :src="movie.poster" :alt="movie.title">
+                                    <p class="font-bold text-sm">{{ movie.title }}</p>
+                                </router-link>
+                            </div>
+                            <button type="button"
+                                class="mx-5 absolute top-0 right-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+                                @click="carouselButtonClick('right')">
+                                <span
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                    <span
+                                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                        <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+
+
+                            <!-- <button type="button"
+                                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                @click="carouselButtonClick('prev')">
+                                <span
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 19l-7-7 7-7"></path>
+                                    </svg>
                                 </span>
                             </button>
                             <div class="px-20 py-5 grid grid-cols-6 gap-4">
-                                <router-link v-for="movie in this.carouselSlides[this.slideIndex]" 
-                                class="max-w-sm hover:opacity-75 hover:text-red-700"
-                                :to="{
-                                    name: 'Showtime',
-                                    params: {key: movie.key, slug: movie.slug},
-                                }">
-                                        <img class="rounded" :src="movie.poster" :alt="movie.title">
-                                        <p class="font-bold">{{movie.title}}</p>
+                                <router-link v-for="movie in this.carouselSlides[this.slideIndex]"
+                                    class="max-w-sm hover:opacity-75 hover:text-red-700" :to="{
+                                            name: 'Showtime',
+                                            params: { key: movie.key, slug: movie.slug },
+                                        }">
+                                    <img class="rounded" :src="movie.poster" :alt="movie.title">
+                                    <p class="font-bold">{{ movie.title }}</p>
                                 </router-link>
                             </div>
-                            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" @click="carouselButtonClick('next')">
-                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
-                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <button type="button"
+                                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                @click="carouselButtonClick('next')">
+                                <span
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                    <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
                                 </span>
-                            </button>
+                            </button> -->
                         </div>
                     </section>
                 </div>
-                
+
                 <section>
                     <div class="p-2 md:p-5">
                         <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">FEATURED</p>
@@ -66,22 +117,31 @@
                             <div v-for="item in this.featuredItems" class="bg-white rounded-lg hover:text-red-700">
                                 <div class="hover:opacity-75">
                                     <img class="rounded-lg" :src="item.img" alt="featured image" />
-                                    <p class="mt-2 font-bold text-sm md:text-base line-clamp-1 md:line-clamp-0">{{item.txt}}</p>
-                                    <p class="text-xs md:text-sm font-light line-clamp-2 md:line-clamp-0">{{item.subtxt}}</p>
+                                    <p class="mt-2 font-bold text-sm md:text-base line-clamp-1 md:line-clamp-0">{{ item.txt
+                                    }}
+                                    </p>
+                                    <p class="text-xs md:text-sm font-light line-clamp-2 md:line-clamp-0">{{ item.subtxt }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
                 <div class="p-2 md:p-5">
                     <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">OFFERS</p>
                     <div class="grid grid-cols-3 gap-2">
                         <div v-for="offer in this.offers" class="bg-white border border-gray-300 rounded shadow-md">
                             <img class="w-full
                             " :src="offer.img" alt="offer image" />
-                            <p class="text-sm md:text-base font-bold px-2 md:px-4 py-1 md:py-2 line-clamp-1 md:line-clamp-0">{{offer.txt}}</p>
-                            <p class="text-xs md:text-sm font-light px-2 md:px-4 md:py-2 line-clamp-2 md:line-clamp-0">{{offer.subtxt}}</p>
-                            <p class="mt-auto px-2 md:px-4 py-1 md:py-2 font-bold text-xs md:text-sm hover:underline uppercase text-red-600">{{offer.btnName}}</p>
+                            <p
+                                class="text-sm md:text-base font-bold px-2 md:px-4 py-1 md:py-2 line-clamp-1 md:line-clamp-0">
+                                {{ offer.txt }}</p>
+                            <p class="text-xs md:text-sm font-light px-2 md:px-4 md:py-2 line-clamp-2 md:line-clamp-0">
+                                {{ offer.subtxt }}</p>
+                            <p
+                                class="mt-auto px-2 md:px-4 py-1 md:py-2 font-bold text-xs md:text-sm hover:underline uppercase text-red-600">
+                                {{ offer.btnName }}</p>
                         </div>
                     </div>
                 </div>
@@ -89,7 +149,8 @@
                     <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">NEW & COMING SOON</p>
                     <div class="grid grid-cols-4 gap-2 md:grid-cols-8 md:gap-4">
                         <div v-for="m in this.comingSoon" class="rounded">
-                            <img :src="m.poster" alt="poster" class="rounded hover:brightness-75 hover:scale-110 transition-all duration-700 cursor-pointer">
+                            <img :src="m.poster" alt="poster"
+                                class="rounded hover:brightness-75 hover:scale-110 transition-all duration-700 cursor-pointer">
                         </div>
                     </div>
                 </div>
@@ -101,17 +162,17 @@
 <script>
 import axios from 'axios';
 
-export default{
+export default {
     name: "MTPContent",
     data() {
         return {
             maxItemsPerSlide: 6,
             maxItemsPerSmallSlide: 3,
             arrivals: [],
-            carouselSlides: [],
-            smallCarouselSlides: [],
-            slideIndex: 0,
-            smallSlideIndex: 0,
+            // carouselSlides: [],
+            // smallCarouselSlides: [],
+            // slideIndex: 0,
+            // smallSlideIndex: 0,
             comingSoon: [],
             featuredItems: [
                 {
@@ -130,15 +191,15 @@ export default{
                     subtxt: 'Puss In Boots faces off with a rampaging giant as only he can'
                 }
             ],
-            offers:[
+            offers: [
                 {
-                    img:'https://images.fandango.com/render/interlace/quality-65/resize-300/images.fandango.com/cms/assets/31a20e20-759e-11ed-90fe-f325d9bf4959--pussinboots-gwp-offerfooter.jpg',
+                    img: 'https://images.fandango.com/render/interlace/quality-65/resize-300/images.fandango.com/cms/assets/31a20e20-759e-11ed-90fe-f325d9bf4959--pussinboots-gwp-offerfooter.jpg',
                     txt: 'BUY A PUSS IN BOOTS: THE LAST WISH MOVIE TICKET',
                     subtxt: 'Get the original Puss In Boots for $7.50 on Vudu. Limited Time Offer.',
                     btnName: 'buy tickets',
                 },
                 {
-                    img:'https://images.fandango.com/render/interlace/quality-65/resize-300/images.fandango.com/cms/assets/dad27a40-7a51-11ed-b2f6-e1f3892e3f59--12daysofgiveaways-homepageoffer-footer.jpg',
+                    img: 'https://images.fandango.com/render/interlace/quality-65/resize-300/images.fandango.com/cms/assets/dad27a40-7a51-11ed-b2f6-e1f3892e3f59--12daysofgiveaways-homepageoffer-footer.jpg',
                     txt: 'JOIN US FOR 12 DAYS OF SAVINGS',
                     subtxt: 'For 12 Days, unlock special Fandango and Vudu offers on the Fandango Facebook page every morning.',
                     btnName: 'learn more',
@@ -152,70 +213,70 @@ export default{
             ],
         }
     },
-    mounted(){
+    mounted() {
         this.getArrivals();
         this.getComingSoon();
     },
-    methods:{
-        getComingSoon()
-        {
+    methods: {
+        getComingSoon() {
             axios
-            .get(`/api/v1/movietheatreproject/get-movies-coming-soon`)
-            .then((response) => {
-                this.comingSoon = response.data;
-            })
-            .catch((error) => {
-                console.error(error);
-            })
+                .get(`/api/v1/movietheatreproject/get-movies-coming-soon`)
+                .then((response) => {
+                    this.comingSoon = response.data;
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
         },
-        carouselButtonClick(button)
-        {
-            if (button === 'prev')
-            {
-                if(this.slideIndex > 0)this.slideIndex-=1;
-                if(this.smallSlideIndex > 0)this.smallSlideIndex -= 1;
-            }
-            else if(button === 'next' )
-            {
-                if(this.slideIndex < this.carouselSlides.length-1) this.slideIndex+=1;
-                if(this.smallSlideIndex < this.smallCarouselSlides.length - 1) this.smallSlideIndex += 1;
-            }
+        carouselButtonClick(direction) {
+            // if (button === 'prev') {
+            //     if (this.slideIndex > 0) this.slideIndex -= 1;
+            //     if (this.smallSlideIndex > 0) this.smallSlideIndex -= 1;
+            // }
+            // else if (button === 'next') {
+            //     if (this.slideIndex < this.carouselSlides.length - 1) this.slideIndex += 1;
+            //     if (this.smallSlideIndex < this.smallCarouselSlides.length - 1) this.smallSlideIndex += 1;
+            // }
+            if (direction === "left") document.getElementById('carousel').scrollLeft -= 800;
+            else if (direction === "right") document.getElementById('carousel').scrollLeft += 800;
         },
-        getArrivals()
-        {
+        getArrivals() {
             axios
-            .get(`/api/v1/movietheatreproject/get-arrivals`)
-            .then((response) => {
-                this.arrivals = response.data;
-                // console.log(this.arrivals);
-                
-                var carouselItems = [];
-                var smallCarouselItems = [];
-                for(let i=0;i<this.arrivals.length;i++)
-                {
-                    carouselItems.push(this.arrivals[i]);
-                    smallCarouselItems.push(this.arrivals[i]);
-                    if(carouselItems.length === this.maxItemsPerSlide)
-                    {
-                        this.carouselSlides.push(carouselItems);
-                        carouselItems = [];
+                .get(`/api/v1/movietheatreproject/get-arrivals`)
+                .then((response) => {
+                    this.arrivals = response.data;
+                    for (let i = 0; i < this.arrivals.length; i++) {
+                        if (this.arrivals[i].title.split(' ').length > 2) {
+                            let title_words = this.arrivals[i].title.split(' ');
+                            this.arrivals[i].title = title_words[0] + " " + title_words[1] + "..."
+                        }
                     }
+                    // // console.log(this.arrivals);
 
-                    if(smallCarouselItems.length === this.maxItemsPerSmallSlide)
-                    {
-                        this.smallCarouselSlides.push(smallCarouselItems);
-                        smallCarouselItems = [];
-                    }
-                }
+                    // var carouselItems = [];
+                    // var smallCarouselItems = [];
+                    // for (let i = 0; i < this.arrivals.length; i++) {
+                    //     carouselItems.push(this.arrivals[i]);
+                    //     smallCarouselItems.push(this.arrivals[i]);
+                    //     if (carouselItems.length === this.maxItemsPerSlide) {
+                    //         this.carouselSlides.push(carouselItems);
+                    //         carouselItems = [];
+                    //     }
 
-                this.carouselSlides.push(carouselItems);
-                this.smallCarouselSlides.push(smallCarouselItems);
-                // console.log(this.carouselSlides);
-                
-            })
-            .catch((error) =>{
-                console.error(error);
-            })
+                    //     if (smallCarouselItems.length === this.maxItemsPerSmallSlide) {
+                    //         this.smallCarouselSlides.push(smallCarouselItems);
+                    //         smallCarouselItems = [];
+                    //     }
+                    // }
+
+                    // this.carouselSlides.push(carouselItems);
+                    // this.smallCarouselSlides.push(smallCarouselItems);
+                    // // console.log(this.carouselSlides);
+
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
         }
     },
 }

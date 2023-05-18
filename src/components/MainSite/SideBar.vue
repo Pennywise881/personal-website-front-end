@@ -21,13 +21,7 @@
                     <p class="my-3 text-center text-sm font-light">NLP, Web & Game Dev</p>
                 </li>
             </ul>
-            <div class="p-5 my-3 flex flex-col">
-                <div v-for="social in this.socials" class="flex mb-3">
-                    <img width="25" :alt="social.alt" :src="social.src">
-                    <!-- <p class="ml-2 hover:text-red-800 hover:underline hover:cursor-pointer">{{ social.title }}</p> -->
-                    <a class="ml-2" :href="social.link" target="_blank">{{ social.title }}</a>
-                </div>
-            </div>
+            <Social />
         </div>
 
         <p class="text-xs mt-auto p-1 text-center">© 2023 <a href="#" class="hover:underline">zamansprojects™</a>. All
@@ -37,10 +31,14 @@
 
 <script>
 import { mapState } from 'vuex';
+import Social from './Social.vue';
 
 
 export default {
     name: 'SideBar',
+    components: {
+        Social
+    },
     computed: {
         ...mapState(['showNavbar']),
     },
@@ -52,32 +50,6 @@ export default {
     data() {
         return {
             isShowNavbar: null,
-            socials: [
-                {
-                    title: 'LinkedIn',
-                    alt: 'linkedin-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Linkedin_circle.svg',
-                    link: "https://www.linkedin.com/in/nafi-uz-zaman-684523222/"
-                },
-                {
-                    title: 'GitHub',
-                    alt: 'github-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg',
-                    link: "https://github.com/NafiZaman"
-                },
-                {
-                    title: 'YouTube',
-                    alt: 'youtube-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/5/52/YouTube_social_white_circle_%282017%29.svg',
-                    link: "https://www.youtube.com/channel/UCQN52RZJuLUk6mXGGgFwbaA"
-                },
-                {
-                    title: 'Twitter',
-                    alt: 'twitter-logo',
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg',
-                    link: "#"
-                },
-            ]
         }
     }
 }

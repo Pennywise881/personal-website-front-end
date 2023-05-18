@@ -1,4 +1,11 @@
 <template>
+    <div class="hidden p-5 my-3 md:flex flex-col">
+        <div v-for="social in this.socials" class="flex mb-3">
+            <img width="25" :alt="social.alt" :src="social.src">
+            <a class="ml-2" :href="social.link" target="_blank">{{ social.title }}</a>
+        </div>
+    </div>
+
     <div class="md:hidden pt-28 pb-10 px-5 flex w-full">
         <img class="rounded-full border-2 border-red-600 shadow-sm w-16" src="../../../src/assets/img.png"
             alt="user image" />

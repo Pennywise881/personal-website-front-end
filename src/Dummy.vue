@@ -1,69 +1,84 @@
 <template>
-  <nav class="md:hidden p-5 font-bold w-full border-b-2 border-red-600 bg-zinc-200 fixed">
-    <!-- Mobile view navbar -->
-    <div class="flex justify-between items-center">
-      <p @click="this.setSection('blog')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>
-      <div>
-        <button class="py-1 px-2 block text-white bg-red-900 rounded-sm" @click="this.onMenuClick()">
-          <svg class="w-8 h-8 fill-current hamburger-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-          <svg class="w-8 h-8 fill-current close-icon hidden" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
-          </svg>
-        </button>
-        <div class="font-normal absolute shadow-md mt-2 right-0 mr-5 dropdown-menu hidden">
-          <div class="bg-zinc-200 border-4 border-white rounded">
+  <div class="md:px-20">
+    <div class="px-2 md:px-10">
+      <div class="p-5">
+        <div class="relative mt-2 md:mt-5 rounded-lg border border-gray-300 p-2">
+          <button type="button"
+            class="mx-5 absolute top-0 left-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+            @click="carouselButtonClick('left')">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+              <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </span>
+          </button>
+          <!-- The cards -->
+          <div class="h-40 md:h-full mx-10 md:mx-20 overflow-x-hidden whitespace-nowrap scroll-smooth" id="carousel">
+            <router-link v-for="movie in this.arrivals"
+              class="inline-grid grid-cols-3 gap-4 md:inline-block mr-2 md:mr-4 hover:opacity-75 hover:text-red-700"
+              :to="{ name: 'Showtime', params: { key: movie.key, slug: movie.slug } }">
+              <img class="rounded" :src="movie.poster" :alt="movie.title">
+              <p class="font-bold text-sm">{{ movie.title }}</p>
+            </router-link>
           </div>
+          <button type="button"
+            class="mx-5 absolute top-0 right-0 z-30 flex items-center justify-center h-full cursor-pointer focus:outline-none"
+            @click="carouselButtonClick('right')">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+              <span
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </span>
+          </button>
         </div>
       </div>
-    </div>
-  </nav>
-
-  <div class="md:hidden px-5 flex w-full py-28">
-    <!-- <img class="rounded-full border-2 border-red-600 shadow-sm w-16" src="../../../src/assets/img.png" alt="user image" /> -->
-    <div class="flex flex-col justify-center">
-      <p class="mx-2 font-bold">Nafi Uz Zaman</p>
-      <p class="mx-2 text-sm font-light">NLP, Web & Gamedev</p>
-    </div>
-    <div class="flex items-center">
-      <button @click="this.showSocials()"
-        class="ml-10 rounded hover:bg-black hover:text-white text-sm p-1 bg-transparent border border-black">
-        Follow
-      </button>
     </div>
   </div>
 </template>
   
 <script>
-import SideBar from './components/MainSite/SideBar.vue';
+import axios from 'axios';
 
 export default {
-  components: {
-    SideBar,
-  },
+  name: 'Dummy',
+
   data() {
     return {
-      showNavbar: true
+      arrivals: [],
     };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+    this.getArrivals();
   },
   methods: {
-    handleScroll() {
-      this.showNavbar = window.pageYOffset === 0;
-    }
+    carouselButtonClick(direction) {
+      if (direction === "left") document.getElementById('carousel').scrollLeft -= 800;
+      else if (direction === "right") document.getElementById('carousel').scrollLeft += 800;
+    },
+    getArrivals() {
+      axios
+        .get(`/api/v1/movietheatreproject/get-arrivals`)
+        .then((response) => {
+          this.arrivals = response.data;
+          for (let i = 0; i < this.arrivals.length; i++) {
+            if (this.arrivals[i].title.split(' ').length > 2) {
+              let title_words = this.arrivals[i].title.split(' ');
+              this.arrivals[i].title = title_words[0] + " " + title_words[1] + "..."
+            }
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    },
   }
 };
 </script>
-  
-<style>
-/* Add your custom styles here */
-/* You can customize the styles according to your needs */
-</style>
   

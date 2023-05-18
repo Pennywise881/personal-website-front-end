@@ -33,7 +33,7 @@
             <p :id="post.key + '-text'" class="text-sm md:text-base mb-3 font-normal text-gray-700 text-justify"
                 v-html="post.text"></p>
         </div>
-        <div v-else-if="!this.gotPosts && this.postType !== 'games'" class="flex justify-center">
+        <div v-else-if="!this.gotPosts" class="flex justify-center">
             <svg class="animate-spin md:w-40 md:h-40 w-20 h-20" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
