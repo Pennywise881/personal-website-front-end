@@ -97,9 +97,9 @@
                             </div>
                         </div> -->
                         <div class="scroll-smooth flex overflow-x-auto" id="carousel">
-                            <div v-for="movie in this.comingSoon" class="flex-shrink-0 -mr-24 md:-mr-20">
-                                <img class="rounded w-2/4 cursor-pointer hover:opacity-70" :src="movie.poster"
-                                    :alt="movie.title">
+                            <div v-for="movie in this.comingSoon" class="flex-shrink-0 -mr-24">
+                                <img class="rounded w-2/4 hover:brightness-75 hover:scale-110 transition-all duration-700 cursor-pointer"
+                                    :src="movie.poster" :alt="movie.title">
                             </div>
                         </div>
                     </div>
