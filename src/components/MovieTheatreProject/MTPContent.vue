@@ -180,10 +180,10 @@ export default {
         },
         carouselButtonClick(direction) {
             if (direction === 'left')
-                document.getElementById('carousel').scrollLeft -= 100;
+                document.getElementById('carousel').scrollLeft -= 800;
 
             else if (direction === 'right')
-                document.getElementById('carousel').scrollLeft += 100;
+                document.getElementById('carousel').scrollLeft += 800;
 
         },
         getArrivals() {
