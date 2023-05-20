@@ -15,7 +15,7 @@ import Post from '../../components/MainSite/Post.vue';
 import SideBar from '../../components/MainSite/SideBar.vue';
 import NavBar from "../../components/MainSite/NavBar.vue";
 import Social from "../../components/MainSite/Social.vue";
-// import Dummy from '../../Dummy.vue';
+import Dummy from '../../Dummy.vue';
 
 
 export default {
@@ -25,7 +25,7 @@ export default {
         Post,
         NavBar,
         Social,
-        // Dummy
+        Dummy
     },
 };
 </script>
