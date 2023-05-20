@@ -1,22 +1,20 @@
 <template>
     <div class="bg-zinc-200 md:px-20">
-        <div class="px-2 md:px-10">
+        <div class="md:px-10">
             <div class="bg-white rounded overflow-hidden shadow-lg">
-                <div class="p-2 md:p-5">
+                <div class="md:p-5">
                     <div class="my-1 md:my-5">
-                        <p class="md:text-xl font-bold">BUY MOVIE TICKETS</p>
-                        <p class="text-xs md:text-sm text-red-500 font-bold">
-                            <span class="hover:underline hover:cursor-pointer">SEE ALL MOVIES</span>
+                        <p class="px-2 md:px-0 text-xl font-extrabold uppercase">now showing</p>
+                        <p class="px-2 md:px-0 text-xs md:text-sm text-red-500 font-bold">
+                            <span class="hover:underline hover:cursor-pointer uppercase">see all movies</span>
                         </p>
                     </div>
 
-                    <!-- <section> -->
-                    <section>
+                    <section class="p-2 md:p-0">
                         <div class="flex justify-center">
-                            <button class="hidden md:block cursor-pointer focus:outline-none"
-                                @click="carouselButtonClick('left')">
+                            <button class="cursor-pointer focus:outline-none" @click="carouselButtonClick('left')">
                                 <span
-                                    class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
+                                    class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-red-600 hover:bg-red-500 text-white">
                                     <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -24,18 +22,18 @@
                                     </svg>
                                 </span>
                             </button>
-                            <div class="rounded-lg border border-gray-300 h-30 p-2">
-                                <div class="scroll-smooth flex overflow-x-auto md:overflow-hidden" id="carousel">
+                            <div class="rounded md:border border-gray-300">
+                                <div class="scroll-smooth flex overflow-hidden md:p-1" id="carousel">
                                     <router-link v-for="movie in arrivals"
-                                        class="flex-shrink-0 -mr-12 hover:opacity-70 hover:text-red-700"
+                                        class="flex-shrink-0 -mr-14 md:-mr-12 hover:text-red-700"
                                         :to="{ name: 'Showtime', params: { key: movie.key, slug: movie.slug } }">
-                                        <img class="rounded w-2/3 cursor-pointer" :src="movie.poster" :alt="movie.title">
+                                        <img class="rounded w-2/3 cursor-pointer hover:opacity-70" :src="movie.poster"
+                                            :alt="movie.title">
                                         <p class="font-bold">{{ movie.title }}</p>
                                     </router-link>
                                 </div>
                             </div>
-                            <button class="hidden md:block cursor-pointer focus:outline-none"
-                                @click="carouselButtonClick('right')">
+                            <button class="cursor-pointer focus:outline-none" @click="carouselButtonClick('right')">
                                 <span
                                     class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-red-600 hover:bg-red-500 text-white">
                                     <svg aria-hidden="true" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
@@ -51,7 +49,7 @@
 
                 <section>
                     <div class="p-2 md:p-5">
-                        <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">FEATURED</p>
+                        <p class="mt-5 md:mt-0 text-xl font-extrabold mb-2 md:mb-5 uppercase">featured</p>
                         <div class="grid grid-cols-3 gap-2">
                             <div v-for="item in this.featuredItems" class="bg-white rounded-lg hover:text-red-700">
                                 <div class="hover:opacity-75">
@@ -69,7 +67,7 @@
 
                 <section>
                     <div class="p-2 md:p-5">
-                        <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">OFFERS</p>
+                        <p class="mt-5 md:mt-0 text-xl font-extrabold mb-2 md:mb-5 uppercase">offers</p>
                         <div class="grid grid-cols-3 gap-2">
                             <div v-for="offer in this.offers" class="bg-white border border-gray-300 rounded shadow-md">
                                 <img class="w-full
@@ -89,7 +87,7 @@
 
                 <section>
                     <div class="p-2 md:p-5">
-                        <p class="mt-5 md:mt-0 md:text-xl font-bold mb-2 md:mb-5">NEW & COMING SOON</p>
+                        <p class="mt-5 md:mt-0 text-xl font-extrabold mb-2 md:mb-5 uppercase">new & coming soon</p>
                         <!-- <div class="grid grid-cols-4 gap-2 md:grid-cols-8 md:gap-4">
                             <div v-for="m in this.comingSoon" class="rounded">
                                 <img :src="m.poster" alt="poster"
@@ -179,11 +177,15 @@ export default {
                 })
         },
         carouselButtonClick(direction) {
+            let speed;
+            if (window.innerWidth < 768) speed = 200;
+            else speed = 800;
+
             if (direction === 'left')
-                document.getElementById('carousel').scrollLeft -= 800;
+                document.getElementById('carousel').scrollLeft -= speed;
 
             else if (direction === 'right')
-                document.getElementById('carousel').scrollLeft += 800;
+                document.getElementById('carousel').scrollLeft += speed;
 
         },
         getArrivals() {
