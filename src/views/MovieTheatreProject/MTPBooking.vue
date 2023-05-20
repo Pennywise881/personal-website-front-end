@@ -66,7 +66,7 @@
                     <div class="flex items-center border-b border-red-500 py-2">
                         <input id="mtp_booking_email"
                             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                            type="text" placeholder="Jane Doe" aria-label="Full name">
+                            type="text" placeholder="Email" aria-label="Full name">
                         <button @click="confirmBooking"
                             class="flex-shrink-0 bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded font-bold"
                             type="button">
