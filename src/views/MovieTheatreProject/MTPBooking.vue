@@ -2,7 +2,7 @@
     <MTPNavBar />
     <div>
         <div class="bg-zinc-700 flex justify-center p-4">
-            <img :src="this.bookingData.poster" alt="poster" class="border-2 border-white w-64 md:w-40">
+            <img :src="this.bookingData.poster" alt="poster" class="border-2 border-white w-2/3 md:w-40">
             <div class="ml-4 flex flex-col">
                 <p class="text-white font-bold text-xl md:text-2xl">{{ this.bookingData.title }}</p>
                 <p class="text-gray-300 text-sm mb-10">
@@ -169,15 +169,14 @@ export default {
         setSeat(col, event) {
             if (this.seats.includes(event.target.innerHTML)) {
                 this.toggleClassList(col, event)
-                this.remainingSeats += 1;
-                this.seats = array.filter(item => item !== event.target.innerHTML);
+                this.seats = this.seats.filter(item => item !== event.target.innerHTML);
 
             }
             else if (this.tickets > 0 && this.remainingSeats > 0) {
                 this.toggleClassList(col, event);
-                this.remainingSeats -= 1;
                 this.seats.push(event.target.innerHTML)
             }
+            this.remainingSeats = this.tickets - this.seats.length;
         },
         toggleClassList(col, event) {
             if (col === 1) event.target.classList.toggle("bg-blue-600");
@@ -185,12 +184,6 @@ export default {
             event.target.classList.toggle("text-white");
         },
         getSeatButtonClass(color, i, j, index) {
-            // <button :class="{
-            //'border border-blue-600 w-full p-1 hover:bg-blue-600 hover:text-white': !this.seats.includes(this.getSeatRowAlpha(j, index + 1) + i),
-            //'border border-blue-600 w-full p-1 bg-blue-600 text-white': this.seats.includes(this.getSeatRowAlpha(j, index + 1) + i)
-            //}" @click="this.setSeat(index + 1, $event)">
-            //{{ this.getSeatRowAlpha(j, index + 1) }}{{ i }}
-            //</button>
             if (!this.seats.includes(this.getSeatRowAlpha(j, index + 1) + i))
                 return `border border-${color}-600 w-full p-1 text-xs md:text-base hover:bg-${color}-600 hover:text-white`;
             else
