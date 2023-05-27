@@ -69,7 +69,7 @@
                                     <div v-for="j in 5">
                                         <div class="mb-1">
                                             <button :class="this.getSeatButtonClass(color, i, j, index)"
-                                                @click="this.setSeat(index + 1, $event)">
+                                                @click="this.setSeat($event)">
                                                 {{ this.getSeatRowAlpha(j, index + 1) }}{{ i }}
                                             </button>
                                         </div>
@@ -166,26 +166,31 @@ export default {
 
             return String.fromCharCode(baseCharCode + row);
         },
-        setSeat(col, event) {
+        setSeat(event) {
             if (this.seats.includes(event.target.innerHTML)) {
-                this.toggleClassList(col, event)
+                // this.toggleClassList(col, event)
                 this.seats = this.seats.filter(item => item !== event.target.innerHTML);
 
             }
             else if (this.tickets > 0 && this.remainingSeats > 0) {
-                this.toggleClassList(col, event);
+                // this.toggleClassList(col, event);
                 this.seats.push(event.target.innerHTML)
             }
             this.remainingSeats = this.tickets - this.seats.length;
         },
-        toggleClassList(col, event) {
-            if (col === 1) event.target.classList.toggle("bg-blue-600");
-            else event.target.classList.toggle("bg-green-600");
-            event.target.classList.toggle("text-white");
-        },
+        // toggleClassList(col, event) {
+        //     if (col === 1) event.target.classList.toggle("bg-blue-600");
+        //     else event.target.classList.toggle("bg-green-600");
+        //     event.target.classList.toggle("text-white");
+        // },
         getSeatButtonClass(color, i, j, index) {
-            if (!this.seats.includes(this.getSeatRowAlpha(j, index + 1) + i))
+            if (!this.seats.includes(this.getSeatRowAlpha(j, index + 1) + i)) {
+
+                // console.log(color);
+                // if (color === 'blue') return "border border-blue-600 w-full p-1 text-xs md:text-base hover:bg-blue-600 hover:text-white";
                 return `border border-${color}-600 w-full p-1 text-xs md:text-base hover:bg-${color}-600 hover:text-white`;
+
+            }
             else
                 return `border border-${color}-600 w-full p-1 text-xs md:text-base bg-${color}-600 text-white`;
         }
