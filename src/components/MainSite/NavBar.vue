@@ -1,9 +1,10 @@
 <template>
-  <nav class="hidden md:block p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200" v-show="showNavbar">
+  <nav class="hidden sm:block p-5 font-bold md:w-full border-b-2 border-red-600 bg-zinc-200" v-show="showNavbar">
     <!-- Desktop view navbar -->
     <div class="flex justify-between">
       <div class="flex">
-        <p @click="this.setSection('blog')" class="text-3xl font-bold hover:underline hover:cursor-pointer">zamansprojects
+        <p @click="this.setSection('blog')" class="text-xl md:text-3xl font-bold hover:underline hover:cursor-pointer">
+          zamansprojects
         </p>
       </div>
       <div class="flex text-lg font-bold uppercase items-center">
@@ -18,7 +19,7 @@
     </div>
   </nav>
 
-  <nav class="md:hidden p-5 font-bold w-full border-b-2 border-red-600 bg-zinc-200 fixed">
+  <nav class="sm:hidden p-5 font-bold w-full border-b-2 border-red-600 bg-zinc-200 fixed">
     <!-- Mobile view navbar -->
     <div class="flex justify-between items-center">
       <p @click="this.setSection('blog')" class="text-xl hover:underline hover:cursor-pointer">zamansprojects</p>

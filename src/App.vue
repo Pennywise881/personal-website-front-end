@@ -45,7 +45,7 @@ export default {
   methods: {
     handleScroll() {
       const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      this.showButton = scrollPosition > 200; // Show the button when scrolling down at least 100 pixels
+      this.showButton = scrollPosition > 300; // Show the button when scrolling down at least 100 pixels
     },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top with smooth animation
