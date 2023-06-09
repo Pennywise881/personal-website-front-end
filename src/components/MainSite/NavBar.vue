@@ -7,9 +7,9 @@
           zamansprojects
         </p>
       </div>
-      <div class="flex text-lg font-bold uppercase items-center">
+      <div class="flex text-base md:text-lg font-bold uppercase items-center">
         <div v-for="item in this.navItems">
-          <p class="self-center px-10 ">
+          <p class="self-center px-5 md:px-10">
             <span @click="this.setSection(item)" class="hover:underline hover:cursor-pointer hover:text-red-800">
               {{ item }}
             </span>
